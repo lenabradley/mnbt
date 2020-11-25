@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mnbt"
+version = "0.1.0"
+description = "Monday night before Thanksgiving"
+authors = ["Lena Bartell <lenabartell@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.5"
+pendulum = "^2.1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
