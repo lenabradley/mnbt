@@ -64,17 +64,16 @@ def num_mondays_before_thanksgiving(date: pendulum.Date) -> int:
     Start looking forward from the given date
     If the given date is Thanksgiving return that date
     """
-    next_thanksgiving = is_american_thanksgiving(date)
+    next_thanksgiving = get_next_american_thanksgiving(date)
     days_until_thanksgiving = (next_thanksgiving - date).in_days()
     mondays_until_thanksgiving = max(0, (days_until_thanksgiving + 4) // 7)
 
     return mondays_until_thanksgiving
 
 
-def hello_thread():
+def hello_thread(today: pendulum.Date) -> str:
     """ Say hello to the thread! """
 
-    today = pendulum.today() - pendulum.duration(days=1)
     mondays_until_thanksgiving = num_mondays_before_thanksgiving(today)
 
     if today.day_of_week != pendulum.MONDAY:
@@ -89,8 +88,10 @@ def hello_thread():
     else:
         message = f"H" + ("MNB" * mondays_until_thanksgiving) + "T!"
 
-    print(message)
+    return message
 
 
 if __name__ == '__main__':
-    hello_thread()
+    date = pendulum.today() - pendulum.duration(days=8)
+    message = hello_thread(date)
+    print(f"Today is {date}. {message}")
