@@ -5,7 +5,7 @@ description = "Monday night before Thanksgiving"
 authors = ["Lena Bartell <lenabartell@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.5"
+python = "^3.6"
 pendulum = "^2.1.2"
 
 [tool.poetry.dev-dependencies]

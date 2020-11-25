@@ -3,6 +3,8 @@
 Say hello to the thread according to the MNBT
 
 ## Setup environment
+Using python 3.6+
+
 ```bash
 poetry install
 ```
@@ -14,6 +16,6 @@ from mnbt import hello_thread
 
 date = pendulum.date(year=2011, month=11, day=16)
 message = hello_thread(date)
-print(message)
+print(f"Today is {date.to_formatted_date_string()}. {message}")
 ```
-Prints  "HMNBMNBT!"
+Prints  "Today is Nov 15, 2020. HSNBMNBMNBT!"

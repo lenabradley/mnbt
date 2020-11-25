@@ -51,13 +51,6 @@ def is_american_thanksgiving(date: pendulum.Date) -> bool:
         return False
 
 
-def is_monday_before_thanksgiving(date: pendulum.Date) -> bool:
-    """ Return true if given date is the Monday before Thanksgiving """
-    if is_american_thanksgiving(date + pendulum.Duration(days=3)):
-        return True
-    return False
-
-
 def num_mondays_before_thanksgiving(date: pendulum.Date) -> int:
     """ Return the number of weeks before the Monday night before Thanksgiving
 
@@ -72,26 +65,38 @@ def num_mondays_before_thanksgiving(date: pendulum.Date) -> int:
 
 
 def hello_thread(today: pendulum.Date) -> str:
-    """ Say hello to the thread! """
+    """ Say happy monday before Thanksgiving to the thread! """
 
     mondays_until_thanksgiving = num_mondays_before_thanksgiving(today)
 
-    if today.day_of_week != pendulum.MONDAY:
+    # If just a few days to go...
+    if mondays_until_thanksgiving < 1:
         if is_american_thanksgiving(today):
-            message = "Happy Thanksgiving!"
+            # Happy Thanksgiving
+            return "HT!"
         else:
-            if mondays_until_thanksgiving < 1:
-                message = "Happy Thanksgiving Week!"
-            else:
-                message = "beerbarnchickengood"
+            # Happy Thanksgiving week
+            return "HTW!"
 
-    else:
-        message = f"H" + ("MNB" * mondays_until_thanksgiving) + "T!"
-
-    return message
+    # Its not quite thanksgiving yet... How many mondays to go?
+    message_end = ("MNB" * mondays_until_thanksgiving) + "T!"
+    if today.day_of_week is pendulum.TUESDAY:
+        return "HTNB" + message_end
+    if today.day_of_week is pendulum.WEDNESDAY:
+        return "HWNB" + message_end
+    if today.day_of_week is pendulum.THURSDAY:
+        return "HTNB" + message_end
+    if today.day_of_week is pendulum.FRIDAY:
+        return "HFNB" + message_end
+    if today.day_of_week is pendulum.SATURDAY:
+        return "HSNB" + message_end
+    if today.day_of_week is pendulum.SUNDAY:
+        return "HSNB" + message_end
+    # Must be Monday
+    return "H" + message_end
 
 
 if __name__ == '__main__':
-    date = pendulum.today() - pendulum.duration(days=8)
+    date = pendulum.date(2020, 11, 15)
     message = hello_thread(date)
-    print(f"Today is {date}. {message}")
+    print(f"Today is {date.to_formatted_date_string()}. {message}")
