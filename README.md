@@ -1,6 +1,6 @@
 # Monday Night Before Thanksgiving (MNBT)
 
-Say hello to the thread according to the MNBT
+Say hello to the thread and celebrate the Monday Night Before (American) Thanksgiving 
 
 ## Setup environment
 Using python 3.6+
