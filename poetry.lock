@@ -45,17 +45,6 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
-name = "frozen-flask"
-version = "0.18"
-description = "Freezes a Flask application into a set of static files."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-Flask = ">=1.1.0"
-
-[[package]]
 name = "importlib-metadata"
 version = "4.8.2"
 description = "Read metadata from Python packages"
@@ -178,7 +167,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "d5f3285f87180fc04944537f95c45746eac379d41b525ed5a8b19c3eb584b36d"
+content-hash = "efddf736bb6e413c87cacaf0141c29c62f27fe9fda2148d566e8a06cbe84a4ea"
 
 [metadata.files]
 click = [
@@ -196,10 +185,6 @@ dataclasses = [
 flask = [
     {file = "Flask-2.0.2-py3-none-any.whl", hash = "sha256:cb90f62f1d8e4dc4621f52106613488b5ba826b2e1e10a33eac92f723093ab6a"},
     {file = "Flask-2.0.2.tar.gz", hash = "sha256:7b2fb8e934ddd50731893bdcdb00fc8c0315916f9fcd50d22c7cc1a95ab634e2"},
-]
-frozen-flask = [
-    {file = "Frozen-Flask-0.18.tar.gz", hash = "sha256:4113638baebb348e16b10b12cbd88bddc7309f24d94332a18ae6a56c8ac02d3d"},
-    {file = "Frozen_Flask-0.18-py3-none-any.whl", hash = "sha256:6d892fd929f6676c3270b7d91d86a1fc03c9850dc21e3b02b3946381c48ab307"},
 ]
 importlib-metadata = [
     {file = "importlib_metadata-4.8.2-py3-none-any.whl", hash = "sha256:53ccfd5c134223e497627b9815d5030edf77d2ed573922f7a0b8f8bb81a1c100"},
