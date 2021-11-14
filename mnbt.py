@@ -1,8 +1,11 @@
 """
 Script to celebrate the Monday night before Thanksgiving
 """
-
+import logging
 import pendulum
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_next_american_thanksgiving(date: pendulum.Date) -> pendulum.Date:
@@ -10,17 +13,18 @@ def get_next_american_thanksgiving(date: pendulum.Date) -> pendulum.Date:
 
     If the given date is Thanksgiving, return that date
     """
+    start_date = date
     if is_american_thanksgiving(date):
         return date
 
     one_day = pendulum.Duration(days=1)
-    for _ in range(365):
+    for _ in range(366 + 30 + 1):
         date += one_day
 
         if is_american_thanksgiving(date):
             return date
 
-    raise ValueError("Thanksgiving not found")
+    raise ValueError(f"Thanksgiving not found. Input date: {start_date}. End date: {date}")
 
 
 def is_american_thanksgiving(date: pendulum.Date) -> bool:
