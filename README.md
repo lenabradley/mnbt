@@ -6,9 +6,12 @@ Say hello to the thread and celebrate the Monday Night Before (American) Thanksg
 Using python 3.6+
 
 ```bash
-python3 -m venv venv
+./bin/setup_env.sh
+```
+
+To activate venv:
+```shell
 source venv/bin/activate
-pip install -r requirements.txt
 ```
 
 ## Example usage
