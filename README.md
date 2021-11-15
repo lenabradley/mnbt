@@ -6,7 +6,9 @@ Say hello to the thread and celebrate the Monday Night Before (American) Thanksg
 Using python 3.6+
 
 ```bash
-poetry install
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ## Example usage
@@ -17,5 +19,6 @@ from mnbt import hello_thread
 date = pendulum.date(year=2011, month=11, day=16)
 message = hello_thread(date)
 print(f"Today is {date.to_formatted_date_string()}. {message}")
+
+# Prints "Today is Nov 15, 2020. HSNBMNBMNBT!"
 ```
-Prints  "Today is Nov 15, 2020. HSNBMNBMNBT!"
