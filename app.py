@@ -15,9 +15,9 @@ def index():
     message = hello_thread(date)
     page = f"""
     <center>
-    Are you ready for
-    <h1>MONDAY NIGHT BEFORE THANKSGIVING?</h1>
-    
+    <i>Are you ready for</i>
+    <h2>MONDAY NIGHT BEFORE THANKSGIVING?</h2>
+    <br><br>
     Today is {date.to_day_datetime_string()}, {message}
     <br><br>
     <3
