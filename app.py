@@ -11,7 +11,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return hello_thread(pendulum.today())
+    date = pendulum.today()
+    message = hello_thread(date)
+    f"""
+    
+    ~~~ MONDAY NIGHT BEFORE THANKSGIVING ~~~
+    
+    Today is {date.to_day_datetime_string()}, {message}
+    
+    <3
+    
+    """
+
+    return
 
 
 if __name__ == "__main__":
