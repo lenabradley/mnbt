@@ -14,13 +14,13 @@ def index():
     date = pendulum.today()
     message = hello_thread(date)
     page = f"""
-    
-    <h1>~~~ MONDAY NIGHT BEFORE THANKSGIVING ~~~</h1>
+    <center>
+    <h1>MONDAY NIGHT BEFORE THANKSGIVING</h1>
     
     Today is {date.to_day_datetime_string()}, {message}
-    
+    <br><br>
     <3
-    
+    </center>
     """
     return page
 
