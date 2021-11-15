@@ -18,7 +18,7 @@ def index():
     <i>Are you ready for</i>
     <h2>MONDAY NIGHT BEFORE THANKSGIVING?</h2>
     <br><br>
-    Today is {date.to_day_datetime_string()}, {message}
+    Today is {date.format("dddd MMMM Do, YYYY")}, {message}
     <br><br>
     <3
     </center>
