@@ -13,17 +13,16 @@ app = Flask(__name__)
 def index():
     date = pendulum.today()
     message = hello_thread(date)
-    f"""
+    page = f"""
     
-    ~~~ MONDAY NIGHT BEFORE THANKSGIVING ~~~
+    <h1>~~~ MONDAY NIGHT BEFORE THANKSGIVING ~~~</h1>
     
     Today is {date.to_day_datetime_string()}, {message}
     
     <3
     
     """
-
-    return
+    return page
 
 
 if __name__ == "__main__":
