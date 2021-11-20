@@ -23,7 +23,7 @@ def index():
     <br><br>
     Today is {date.format("dddd MMMM Do, YYYY")}, {message}
     <br><br>
-    <3
+    <p style="font-size:50">&#129411; &#127810; &#127792; &#127809; &#129383; &#127867;</p>
     </center>
     </body>
     </html>
