@@ -14,6 +14,9 @@ def index():
     date = pendulum.today()
     message = hello_thread(date)
     page = f"""
+    <!DOCTYPE html>
+    <html>
+    <body style="background-color:rosybrown;">
     <center>
     <i>Are you ready for</i>
     <h2>MONDAY NIGHT BEFORE THANKSGIVING?</h2>
@@ -22,6 +25,8 @@ def index():
     <br><br>
     <3
     </center>
+    </body>
+    </html>
     """
     return page
 
