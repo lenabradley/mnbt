@@ -2,6 +2,9 @@
 
 Say hello to the thread and celebrate the Monday Night Before (American) Thanksgiving 
 
+
+[http://mnbt.lenabartell.com/](http://mnbt.lenabartell.com/)
+
 ## Setup python environment
 Using python 3.6+
 
