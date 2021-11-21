@@ -1,6 +1,6 @@
 from flask import Flask
 import pendulum
-from lib import mnbt, html, defaults
+from lib import html, defaults
 import logging
 
 
@@ -11,8 +11,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     date = pendulum.today(tz=defaults.time_zone)
-    message = mnbt.hello_thread(date)
-    page = html.generate_index(date=date, message=message)
+    page = html.generate_index(date=date)
     return page
 
 
