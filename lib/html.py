@@ -1,13 +1,14 @@
 import pendulum
 import flask
-from lib import mnbt, defaults
+from lib import mnbt
 
 
 def generate_index(date: pendulum.Date) -> str:
     """Generate index page html"""
     message = mnbt.hello_thread(date)
+    celebration_gif_path = flask.url_for('static', filename="celebration.gif")
     celebration_gif = \
-        f'<br><img src="{defaults.celebration_gif_path}" /><br>' \
+        f'<br><img src="{celebration_gif_path}" /><br>' \
             if mnbt.is_thanksgiving_week(date) else ""
 
     return \
