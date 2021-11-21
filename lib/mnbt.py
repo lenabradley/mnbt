@@ -3,6 +3,7 @@ Script to celebrate the Monday night before Thanksgiving
 """
 import logging
 import pendulum
+from lib import defaults
 
 
 logger = logging.getLogger(__name__)
@@ -68,36 +69,33 @@ def num_mondays_before_thanksgiving(date: pendulum.Date) -> int:
     return mondays_until_thanksgiving
 
 
-def hello_thread(today: pendulum.Date) -> str:
-    """ Say happy monday before Thanksgiving to the thread! """
+def is_thanksgiving_week(date: pendulum.Date) -> bool:
+    """Determine if given date is in thanksgiving week (Mon-Thurs)"""
+    mondays_until_thanksgiving = num_mondays_before_thanksgiving(date)
+    if mondays_until_thanksgiving < 1:
+        return True
+    if mondays_until_thanksgiving == 1 and date.day_of_week == pendulum.MONDAY:
+        return True
+    return False
 
-    mondays_until_thanksgiving = num_mondays_before_thanksgiving(today)
+
+def hello_thread(date: pendulum.Date) -> str:
+    """ Say happy monday before Thanksgiving to the thread! """
+    mondays_until_thanksgiving = num_mondays_before_thanksgiving(date)
 
     # If just a few days to go...
     if mondays_until_thanksgiving < 1:
-        if is_american_thanksgiving(today):
+        if is_american_thanksgiving(date):
             # Happy Thanksgiving
-            return "HT!"
+            return defaults.thanksgiving_day_message
         else:
             # Happy Thanksgiving week
-            return "HTW!"
+            return defaults.thanksgiving_week_message
 
     # Its not quite thanksgiving yet... How many mondays to go?
-    message_end = ("MNB" * mondays_until_thanksgiving) + "T!"
-    if today.day_of_week is pendulum.TUESDAY:
-        return "HTNB" + message_end
-    if today.day_of_week is pendulum.WEDNESDAY:
-        return "HWNB" + message_end
-    if today.day_of_week is pendulum.THURSDAY:
-        return "HTNB" + message_end
-    if today.day_of_week is pendulum.FRIDAY:
-        return "HFNB" + message_end
-    if today.day_of_week is pendulum.SATURDAY:
-        return "HSNB" + message_end
-    if today.day_of_week is pendulum.SUNDAY:
-        return "HSNB" + message_end
-    # Must be Monday
-    return "H" + message_end
+    day_of_week = (date.format("dd")[0] + "NB") if date.day_of_week is not pendulum.MONDAY else ""
+    standard_message = "H" + day_of_week + ("MNB" * mondays_until_thanksgiving) + "T!"
+    return standard_message
 
 
 if __name__ == '__main__':

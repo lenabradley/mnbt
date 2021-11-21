@@ -29,3 +29,28 @@ def test_mnbt_day(year: int, month: int, day: int, expected: str):
     # Assert
     assert message == expected
 
+
+@pytest.mark.parametrize("year, month, day, expected", [
+    (2021, 11, 27, False),
+    (2021, 11, 26, False),
+    (2021, 11, 25, True),
+    (2021, 11, 24, True),
+    (2021, 11, 23, True),
+    (2021, 11, 22, True),
+    (2021, 11, 21, False),
+    (2021, 11, 20, False),
+    (2021, 11, 19, False),
+    (2021, 11, 18, False),
+    (2021, 11, 17, False),
+    (2021, 11, 16, False),
+])
+def test_is_thanksgiving_week(year: int, month: int, day: int, expected: bool):
+    """Test thanksgiving week determination"""
+    # Arrange
+    date = pendulum.date(year=year, month=month, day=day)
+
+    # Act
+    result = mnbt.is_thanksgiving_week(date)
+
+    # Assert
+    assert result == expected
