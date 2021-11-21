@@ -1,36 +1,20 @@
 from flask import Flask
-from mnbt import pendulum, hello_thread
+import pendulum
+from lib import mnbt, html, defaults
 import logging
 
 
 logger = logging.getLogger(__name__)
-
-
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    date = pendulum.today()
-    message = hello_thread(date)
-    page = f"""
-    <!DOCTYPE html>
-    <html>
-    <body style="background-color:rosybrown;">
-    <center>
-    <br><br>
-    <i>Are you ready for</i>
-    <h2>MONDAY NIGHT BEFORE THANKSGIVING?</h2>
-    <br><br>
-    Today is {date.format("dddd MMMM Do, YYYY")}, {message}
-    <br><br>
-    <p style="font-size:50px">&#129411; &#127810; &#127792; &#127809; &#129383; &#127867; &#10084;</p>
-    </center>
-    </body>
-    </html>
-    """
+    date = pendulum.today(tz=defaults.time_zone)
+    message = mnbt.hello_thread(date)
+    page = html.generate_index(date=date, message=message)
     return page
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host=defaults.host, port=defaults.port, debug=True)
